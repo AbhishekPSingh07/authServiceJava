@@ -1,0 +1,68 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+# Compiled class files
+*.class
+*.war
+*.jar
+
+# Log files
+logs/
+*.log
+*.tmp
+
+# Gradle-specific
+.gradle/
+build/
+out/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Maven-specific
+.mvn/
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+pom.xml.backup
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# VS Code
+.vscode/
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Lombok cache
+.lombok-cache/
+
+# Node modules (if using frontend)
+node_modules/
+
+# Spring Boot specific
+.env
+application*.yml
+application*.properties
+
+# Database files
+*.h2.db
+*.mv.db
+*.pgdata
+
