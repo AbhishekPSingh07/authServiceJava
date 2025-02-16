@@ -19,7 +19,7 @@ import java.util.UUID;
 @Component
 @AllArgsConstructor
 @Data
-public class UserDetailsImpl implements UserDetailsService
+public class UserDetailsServiceImpl implements UserDetailsService
 {
 
     @Autowired
