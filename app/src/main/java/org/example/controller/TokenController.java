@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.entities.RefreshToken;
+import org.example.entities.UserInfo;
 import org.example.requests.AuthRequestDTO;
 import org.example.requests.RefreshTokenRequestDTO;
 import org.example.response.JwtResponseDTO;
@@ -44,6 +45,14 @@ public class TokenController {
 
     @PostMapping("auth/v1/refreshToken")
     public JwtResponseDTO refreshToken(@RequestBody RefreshTokenRequestDTO refreshTokenRequestDTO) {
-        return refreshTokenService.findByToken(refreshTokenRequestDTO.getToken(refreshTokenRequestDTO.getToken()))
+        return refreshTokenService.findByToken(refreshTokenRequestDTO.getToken())
+                .map(refreshTokenService::verifyExpiration)
+                .map(RefreshToken::getUserInfo)
+                .map(UserInfo->{
+                    String accessToken = jwtService.GenerateToken(UserInfo.getUsername());
+                    return JwtResponseDTO.builder()
+                            .accessToken(accessToken)
+                            .token(refreshTokenRequestDTO.getToken()).build();
+                }).orElseThrow(() -> new RuntimeException("Refresh Token is not in DB...!"));
     }
 }
